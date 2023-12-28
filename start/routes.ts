@@ -24,13 +24,7 @@ Route.post('/gettoken', async ({request, response, auth} : HttpContextContract) 
   return response.ok(token);
 });
 
-Route.get('/auth', async ({auth, response} : HttpContextContract) => {
-  const userAuth = await auth.use('api').authenticate();
-
-  if(userAuth){
-    return response.ok(userAuth);
-  } else {
-    return response.unauthorized("User nao autenticado");
-  }
-});
+Route.get('/auth', async ({ response } : HttpContextContract) => {
+    return response.ok("Somente usuarios autenticados podem acessar");
+}).middleware("auth");
 
