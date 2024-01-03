@@ -24,6 +24,14 @@ export default class AuthController {
                     expira = "30days"
                     break;
             }
+
+            const token = await auth.use("api").attempt(email, password, {
+                expiresIn: expira,
+                name: user.serialize().email
+            });
+
+            response.ok(token);
+
         } catch {
             return response.badRequest("Invalid Credentials")
         }
