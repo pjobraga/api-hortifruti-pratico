@@ -11,6 +11,9 @@ export default class Cliente extends BaseModel {
   @column()
   public nome: string;
 
+  @column()
+  public telefone: string;
+
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 }
