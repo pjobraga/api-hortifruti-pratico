@@ -1,13 +1,29 @@
-import { DateTime } from 'luxon'
+
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Endereco extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public id: number;
 
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
+  @column()
+  public clienteId: number;
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
+  @column()
+  public cidadeId: number;
+
+  @column()
+  public rua: string;
+
+  @column()
+  public numero: string | null;
+
+  @column()
+  public bairro: string;
+
+  @column()
+  public pontoReferencia: string | null;
+
+  @column()
+  public complemento: string | null;
 }
+
